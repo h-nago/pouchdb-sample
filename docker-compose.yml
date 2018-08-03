@@ -1,0 +1,16 @@
+version: '3'
+services:
+  couchdb:
+    image: couchdb
+    ports:
+      - 5984:5984
+    volumes:
+      - ./couchdb:/opt/couchdb/etc
+  client:
+    image: node
+    ports:
+      - 3000:3000
+    volumes:
+      - ./client:/client 
+    working_dir: /client
+    command: yarn start
